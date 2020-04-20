@@ -3,9 +3,9 @@
 ## Description
  With this script you can use a debit card (which is an item) to make purchases or pay people. It's even possible to steal another player's card and use it to make buy something on your own, even if the owner is offline. To avoid fraudolent use of the cards you have to approve every transaction with your very own PIN that you can change in the menu. Criminals can also get a bruteforcing machine, that will enable them to gather the code for any card they stole, so be very careful!
 
- By default there is a blip at the Pacific Standard Bank where players can get a card contract, but it's even possible to set up the bank as a [business](), then you can roleplay as a bank teller and issue players their card, or even deposit and withdraw cash for them! The script is also complete with a transaction tracking feature, that you can use wherever you want to track where and how everyone spends their money!
+ By default there is a blip at the Pacific Standard Bank where players can get a card contract, but it's even possible to set up the bank as a [business](https://github.com/CPietro/vRP_business), then you can roleplay as a bank teller and issue players their card, or even deposit and withdraw cash for them! The script is also complete with a transaction tracking feature, that you can use wherever you want to track where and how everyone spends their money!
 
- There is even a POS terminal at every vRP market and at every [player owned business](), so the card will be usable everywhere!
+ There is even a POS terminal at every vRP market and at every [player owned business](https://github.com/CPietro/vRP_business), so the card will be usable everywhere!
 
 ## Pictures
 <details><summary>SHOW</summary>
@@ -20,11 +20,11 @@
 
 ## Dependencies
  #### Mandatory
- * [vRP_business]() - Companies that can be bought by players.
- * [vRP_companyaccs]() - Bank accounts for [vRP_business](https://guides.github.com/).
+ * [vRP_business](https://github.com/CPietro/vRP_business) - Companies that can be bought by players.
+ * [vRP_companyaccs](https://github.com/CPietro/vRP_companyaccs) - Bank accounts for [vRP_business](https://guides.github.com/).
  * [Changes](#changes-to-vrp-mandatory) - Mandatory modifications to vRP.
 #### Optionals
- * [vRP_atms]() - ATMs you can withdraw cash with the cards from this script.
+ * [vRP_atms]() - ATMs you can withdraw cash with the cards from this script. - COMING SOON
  * [Changes](#changes-to-vrp-optional) - It's possible to have more features and use cases if all of them are installed.
 
 ## Installation
@@ -82,9 +82,9 @@
   </p>
   </details>
 
-* To be able to withdraw money using your card from standard vRP ATMs, replace your ```vrp\modules\basic_atm.lua``` file with [this](https://link.to.the.file.com/) one.
+* To be able to withdraw money using your card from standard vRP ATMs, replace your ```vrp\modules\basic_atm.lua``` file with [this](https://github.com/CPietro/vRP_misc_files/blob/master/basic_atm.lua) one.
 
-* To be able to pay with your card at the markets, replace your ```vrp\modules\basic_market.lua``` file with [this]() one.
+* To be able to pay with your card at the markets, replace your ```vrp\modules\basic_market.lua``` file with [this](https://github.com/CPietro/vRP_misc_files/blob/master/basic_market.lua) one.
 
 * Replace the ```vRP.tryFullPayment``` function in the ```vrp\modules\money.lua``` file to include the card balance:
   <details><summary>SHOW</summary>
