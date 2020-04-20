@@ -125,8 +125,8 @@
   ```lua
   {"bank","banca.pos",248.97190856934,224.39764404297,106.28702545166}
   ```
-  "bank" -> The internal name of the business;
-  "banca.pos" -> The permission people should have to be able to use the POS Terminal (employees);
+  "bank" -> The internal name of the business;\
+  "banca.pos" -> The permission people should have to be able to use the POS Terminal (employees);\
   x,y,z -> Coordinates for the blip;
   </details> 
 
