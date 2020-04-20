@@ -120,15 +120,15 @@
   
 ## Instructions
   * To add a new ATM Terminal (there should be one for each business), simply add the code below to the ```cfg.pos``` table in the ```vrp_cards\cfg\coin.lua``` file:
-   <details><summary>SHOW</summary>
+    <details><summary>SHOW</summary>
 
-   ```lua
-   {"bank","banca.pos",248.97190856934,224.39764404297,106.28702545166}
-   ```
-   "bank" -> The internal name of the business;\
-   "banca.pos" -> The permission people should have to be able to use the POS Terminal (employees);\
-   x,y,z -> Coordinates for the blip;
-   </details> 
+    ```lua
+    {"bank","banca.pos",248.97190856934,224.39764404297,106.28702545166}
+    ```
+    "bank" -> The internal name of the business;\
+    "banca.pos" -> The permission people should have to be able to use the POS Terminal (employees);\
+    x,y,z -> Coordinates for the blip;
+    </details> 
 
 ## License
   ```
