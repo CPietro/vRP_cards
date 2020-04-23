@@ -91,13 +91,19 @@ function vRPca.paga_utente(user_id)
 												amount = parseInt(amount)
 												if amount > 0 then
 													if vRPca.tryCoinPayment(num_utente,math.floor(amount*1.02)) then 																				
-														vRPca.giveCoins(destinatario,amount)
-														vRPclient.notify(player, {lang.common.sent_amount({amount})})
-														vRPclient.notify(target, {lang.common.received_amount({amount})})
-														vRPclient.notify(player, {lang.common.fee_amount({amount*0.02})})
-														vRPcc.addBankMoney({"bank", math.floor(amount*0.02), nil})
-														vRPclient.getPosition(player, {}, function(x,y,z)
-															vRPca.transactionTrack(num_utente, nil, lang.tracking.payment(), amount, "x="..x..", y="..y..", z="..z..".", cardnumber, nil, nil)
+														vRPca.getCardNumber(destinatario, function(card_nbr)
+															if card_nbr ~= 0 and card_nbr ~= 1111111111111111 then
+																vRPca.giveCoins(destinatario,amount)
+															else
+																vRP.giveBankMoney({destinatario,amount})
+															end
+															vRPclient.notify(player, {lang.common.sent_amount({amount})})
+															vRPclient.notify(target, {lang.common.received_amount({amount})})
+															vRPclient.notify(player, {lang.common.fee_amount({amount*0.02})})
+															vRPcc.addBankMoney({"bank", math.floor(amount*0.02), nil})
+															vRPclient.getPosition(player, {}, function(x,y,z)
+																vRPca.transactionTrack(num_utente, nil, lang.tracking.payment(), amount, "x="..x..", y="..y..", z="..z..".", cardnumber, nil, nil)
+															end)
 														end)	
 													else
 														vRPclient.notify(player, {lang.buy.not_enough_money()})
