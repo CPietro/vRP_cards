@@ -50,6 +50,7 @@ MySQL.createCommand("vRP/get_coins","SELECT * FROM vrp_cards WHERE user_id = @us
 MySQL.createCommand("vRP/set_coins","UPDATE vrp_cards SET coins = @coins WHERE user_id = @user_id")
 MySQL.createCommand("vRP/transaction_track","INSERT INTO money_transactions(user_id,tipo,amount,os_time,os_date,nome,cognome,telefono,age,place,cc_number,is_business,id_destinatario,nome_dest,cognome_dest,telefono_dest,age_dest,is_business_dest) VALUES(@user_id,@tipo,@amount,@os_time,@os_date,@nome,@cognome,@telefono,@age,@place,@cc_number,@is_business,@id_destinatario,@nome_dest,@cognome_dest,@telefono_dest,@age_dest,@is_business_dest)")
 MySQL.createCommand("vRP/get_num_id","SELECT * FROM vrp_cards WHERE numerocarta = @numerocarta")
+MySQL.createCommand("vRP/get_id_num","SELECT * FROM vrp_cards WHERE user_id = @user_id")
 MySQL.createCommand("vRP/get_carte","SELECT * FROM vrp_cards")
 MySQL.createCommand("vRP/get_pin","SELECT * FROM vrp_cards WHERE numerocarta = @numerocarta")
 MySQL.createCommand("vRP/insert_card_pin","UPDATE vrp_cards SET pin = @pin WHERE user_id = @user_id")
@@ -159,6 +160,17 @@ function vRPca.getNumeroID(numerocc, cbr)
 	end)
 end
 
+function vRPca.getCardNumber(user_id, cbr)
+	local task = Task(cbr,{""})
+	MySQL.query("vRP/get_id_num", {user_id = user_id}, function(rows, affected)
+		if #rows > 0 then
+			task({rows[1].numerocarta})
+		else
+			task()
+		end
+	end)
+end
+
 function vRPca.userIdentification(player, cbr)
 	local task = Task(cbr,{""})	
 	local user_id = vRP.getUserId({player})
@@ -181,10 +193,10 @@ function vRPca.userIdentification(player, cbr)
 							if k == carte then
 								vRP.prompt({player, lang.common.select_card({usrList}),"",function(player,nome)
 									for key,value in ipairs(usrData) do
-										if parseInt(nome) == value.useridentity.user_id then
+										if tonumber(nome) == value.useridentity.user_id then
 											vRPca.getPIN(value.cardnumber, function(pin_giusto)	
 												vRP.prompt({player,lang.pin.insert(),"",function(player,pin_inserito)
-													if parseInt(pin_inserito) == pin_giusto then
+													if tonumber(pin_inserito) == pin_giusto then
 														task({player, value.cardnumber, value.userid, value.useridentity})
 													else
 														vRPclient.notify(player, {lang.pin.wrong()})
@@ -224,7 +236,7 @@ function vRPca.basicUserIdentification(user_id, player, cbr)
 							if k == carte then
 								vRP.prompt({player, lang.common.select_card({usrList}),"",function(player,nome)
 									for key,value in ipairs(usrData) do
-										if parseInt(nome) == value.useridentity.user_id then
+										if tonumber(nome) == value.useridentity.user_id then
 											vRPca.getPIN(value.cardnumber, function(pin_giusto)	
 												task({player, value.cardnumber, value.userid, value.useridentity, pin_giusto})
 											end)
