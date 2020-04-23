@@ -74,7 +74,7 @@ local ch_comperacontr = {function(player,choice)
 		if amount > 0 then
 		  if vRP.tryPayment({user_id,amount*10}) then
 		  vRP.giveInventoryItem({user_id,"penna",amount,true})
-		  vRPcc.addBankMoney({"bank", 10, player})
+		  vRPcc.addBankMoney({"bank", 10, nil})
 		  vRPclient.notify(player,{lang.common.paid_amount({amount*10})})	
 		  vRP.closeMenu({player})
 		  else
