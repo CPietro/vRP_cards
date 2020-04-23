@@ -29,7 +29,7 @@
 
 ## Installation
 1. [IMPORTANT!] Install the dependencies first;
-2. Move the [vrp_cards](#vrp-cards) folder to your ```resources``` directory;
+2. Move the [vrp_cards](#vrp-cards) folder to your ```resources``` directory (the folder name must be all lowercase characters);
 3. Add "```start vrp_cards```" to your server.cfg file;
 4. Make any changes you like to the files in the cfg folder;
 5. Enjoy!
